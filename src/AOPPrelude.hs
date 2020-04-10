@@ -1,12 +1,64 @@
 {-# LANGUAGE NoImplicitPrelude #-}
-module AOPPrelude where
+module AOPPrelude
+  ( -- Standard combinators
+    (.), const, id
+  , outl, outr, swap
+  , assocl, assocr
+  , dupl, dupr
+  , pair, cross, cond
+  , curry, uncurry
+    -- Boolean functions
+  , false, true
+  , (&&)
+  , (||)
+  , not
+  , otherwise
+    -- Relations
+  , leq, less, eql, neq, gtr, geq
+  , meet, join, wok
+    -- Numerical functions
+  , zero, succ, pred
+  , plus, minus, times, divide
+  , negative, positive
+    -- List-processing functions
+  , (++)
+  , null
+  , nil, wrap, cons, cat, concat, snoc
+  , head, tail, split
+  , last, init
+  , inits, tails, splits
+  , cpp, cpl, cpr, cplist
+  , minlist, bmin
+  , maxlist, bmax
+  , thinlist
+  , length, sum, trans, list, filter
+  , catalist
+  , cata1list
+  , cata2list
+  , loop
+  , merge
+  , zip
+  , unzip
+    -- Word and line processing functions
+  , words
+  , lines
+  , unwords
+  , unlines
+    -- Essentials and built-in primitives
+  , ord, chr
+  , (==), (/=), (<=), (<), (>=), (>)
+  , (+), (-), (/), div, mod, (*)
+  , negate, primPrint, strict, error
+  , show
+  , flip
+  ) where
 ---------------------------------------------------------------------
 -- Prelude for `Algebra of Programming' -----------------------------
 -- Original created 14 Sept, 1995, by Richard Bird ------------------
 ---------------------------------------------------------------------
 
 -- Operator precedence table: ---------------------------------------
-import GHC.Base ((==), (/=), (<), (<=), (>=), (>))
+import GHC.Base ((==), (/=), (<), (<=), (>=), (>), ($!))
 import GHC.Err (error)
 import GHC.Num ((+), (-), (*), negate)
 import GHC.Real ((/), div, mod, Fractional)
@@ -85,6 +137,7 @@ wok r       = r . swap
 zero   = const 0
 succ   = (+1)
 pred   = (-1)
+
 plus   = uncurry (+)
 minus  = uncurry (-)
 times  = uncurry (*)
@@ -118,7 +171,6 @@ init = cata1list (nil, cons)
 
 inits = catalist ([[]], extend)
   where extend (a, xs) = [[]] ++ list (a:) xs
-
 tails = catalist ([[]], extend)
   where extend (a, x:xs) = (a:x):x:xs
 splits = zip . pair (inits, tails)
@@ -188,11 +240,12 @@ unwords = cata1list (id, join)
 unlines = cata1list (id, join)
   where join (x, y) = x ++ "\n" ++ y
 
--- Essential and built-in primitives: -------------------------------
+-- Essentials and built-in primitives: -------------------------------
 
 primPrint :: Show a => a -> IO ()
 primPrint = print
--- strict = undefined -- FIXME!
+
+strict = ($!)
 
 flip f a b = f b a
 
