@@ -113,7 +113,6 @@ uncurry :: (a -> b -> c) -> (a, b) -> c
 uncurry f (a, b) = f a b
 
 -- Boolean functions: -----------------------------------------------
-
 false :: a -> Bool
 false = const False
 true  :: a -> Bool
@@ -135,7 +134,6 @@ otherwise :: Bool
 otherwise  = True
 
 -- Relations: -------------------------------------------------------
-
 leq :: Ord a => (a, a) -> Bool
 leq  = uncurry (<=)
 less :: Ord a => (a, a) -> Bool
@@ -157,7 +155,6 @@ wok :: ((b, a) -> c) -> (a, b) -> c
 wok r       = r . swap
 
 -- Numerical functions: ---------------------------------------------
-
 zero   :: a -> Natural
 zero   = const 0
 succ   :: Natural -> Natural
@@ -180,7 +177,6 @@ positive :: (Ord a, Num a) => a -> Bool
 positive = (> 0)
 
 -- List-processing functions: ---------------------------------------
-
 (++) :: [a] -> [a] -> [a]
 [] ++ y    = y
 (a:x) ++ y = a : (x ++ y)
@@ -291,7 +287,6 @@ unzip :: [(a, b)] -> ([a], [b])
 unzip = pair (list outl, list outr)
 
 -- Word and line processing functions: ------------------------------
-
 words :: String -> [String]
 words = filter (not . null) . catalist ([[]], cond ok (glue, new))
   where ok (a, xs)     = (a /= ' ' && a /= '\n')
@@ -313,7 +308,6 @@ unlines = cata1list (id, join)
   where join (x, y) = x ++ "\n" ++ y
 
 -- Essentials and built-in primitives: -------------------------------
-
 primPrint :: Show a => a -> IO ()
 primPrint = print
 
