@@ -162,11 +162,11 @@ wok :: ((b, a) -> c) -> (a, b) -> c
 wok r       = r . swap
 
 -- Numerical functions: ---------------------------------------------
-zero   :: a -> Natural
+zero   :: Num a => t -> a
 zero   = const 0
-succ   :: Natural -> Natural
+succ   :: Num a => a -> a
 succ   = (+1)
-pred   :: Natural -> Natural
+pred   :: Num a => a -> a
 pred n = n - 1
 
 plus   :: Num a => (a, a) -> a
@@ -252,7 +252,7 @@ thinlist r = catalist ([], bump r)
                         | r (b, a)  = b:x
                         | otherwise = a:b:x
 
-length :: [a] -> Natural
+length :: Num a => [t] -> a
 length   = catalist (0, succ . outr)
 sum :: Num a => [a] -> a
 sum      = catalist (0, plus)
