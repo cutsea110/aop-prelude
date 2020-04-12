@@ -51,6 +51,13 @@ module AOPPrelude
   , negate, primPrint, strict, error
   , show
   , flip
+    -- Re-exports
+  , String
+  , Num
+  , Fractional
+  , Show
+  , Natural
+  , module GHC.Types
   ) where
 ---------------------------------------------------------------------
 -- Prelude for `Algebra of Programming' -----------------------------
