@@ -1,4 +1,7 @@
+{-# LANGUAGE NoImplicitPrelude #-}
 module Main (main) where
 
+import AOPPrelude
+
 main :: IO ()
-main = putStrLn "Test suite not yet implemented."
+main = primPrint "Test suite not yet implemented."

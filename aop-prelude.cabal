@@ -30,4 +30,4 @@ test-suite aop-prelude-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
   main-is:             MyLibTest.hs
-  build-depends:       base ^>=4.12.0.0, ghc-prim ^>=0.5.3
+  build-depends:       base ^>=4.12.0.0, ghc-prim ^>=0.5.3, aop-prelude
