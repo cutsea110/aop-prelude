@@ -53,9 +53,12 @@ module AOPPrelude
   , flip
     -- Re-exports
   , String
+  , Eq
+  , Ord
   , Num
   , Fractional
   , Show
+  , Integer
   , Natural
   , module GHC.Types
   ) where
@@ -71,6 +74,7 @@ import GHC.Num ((+), (-), (*), negate, Num)
 import GHC.Real ((/), div, mod, Fractional)
 import GHC.Show (Show, show)
 import GHC.Classes hiding (not, (&&), (||))
+import GHC.Integer (Integer)
 import GHC.Types
 
 import Numeric.Natural (Natural)
