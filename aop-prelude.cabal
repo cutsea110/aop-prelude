@@ -4,7 +4,7 @@ cabal-version:       2.4
 -- http://haskell.org/cabal/users-guide/
 
 name:                aop-prelude
-version:             0.4.0.0
+version:             0.4.1.0
 synopsis:            prelude for Algebra of Programming
 description:         prelude for Algenra of Programming, the original code was created by Richard Bird.
 homepage:            https://github.com/cutsea110/aop-prelude.git
