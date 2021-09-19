@@ -223,7 +223,7 @@ init = cata1list (nil, cons)
 
 inits :: [a] -> [[a]]
 inits = catalist ([[]], extend)
-  where extend (a, xs) = [[]] ++ list (a:) xs
+  where extend (a, xs) = [] : list (a:) xs
 tails :: [a] -> [[a]]
 tails = catalist ([[]], extend)
   where extend (a, x:xs) = (a:x):x:xs
@@ -300,13 +300,13 @@ unzip = pair (list outl, list outr)
 -- Word and line processing functions: ------------------------------
 words :: String -> [String]
 words = filter (not . null) . catalist ([[]], cond ok (glue, new))
-  where ok (a, xs)     = (a /= ' ' && a /= '\n')
+  where ok (a, xs)     = a /= ' ' && a /= '\n'
         glue (a, x:xs) = (a:x):xs
         new (a, xs)    = []:xs
 
 lines :: String -> [String]
 lines = catalist ([[]], cond ok (glue, new))
-  where ok (a, xs)     = (a /= '\n')
+  where ok (a, xs)     = a /= '\n'
         glue (a, x:xs) = (a:x):xs
         new (a,xs)     = []:xs
 
